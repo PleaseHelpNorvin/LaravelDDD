@@ -30,5 +30,14 @@ class ResponseMacroServiceProvider extends ServiceProvider
                 'errors' => $errors
             ], $status);
         });
+
+        Response::macro('notFound', function (string $message = 'Resource not found', int $status = 404) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $message,
+            ], $status);
+        });
+
+        
     }
 }

@@ -7,4 +7,11 @@
 
     interface UserRepositoryInterface {
         public function create(UserDTO $dto): UserEntity;
+
+        public function findById(int $id): UserEntity;
+
+        /**
+        * @return UserEntity[]
+        */
+        public function findAll(): array;
     }

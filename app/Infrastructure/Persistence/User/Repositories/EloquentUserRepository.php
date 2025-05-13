@@ -25,5 +25,31 @@
                 email: $user->email
             );
         }
+
+        public function findById(int $userId): UserEntity
+        {
+            $user = User::findOrFail($userId);
+            
+            return new UserEntity(
+                id: $user->id,
+                name: $user->name,
+                email: $user->email
+            );
+        }
+
+        public function findAll(): array
+        {
+            $users = User::all();
+
+            return $users->map(function($user) {
+                
+                return new UserEntity(
+                    id: $user->id,
+                    name: $user->name,
+                    email: $user->email
+                );
+
+            })->toArray();
+        }
     }
     
